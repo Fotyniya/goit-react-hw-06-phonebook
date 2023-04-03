@@ -7,10 +7,10 @@ export const ContactsList = ()=> {
     const dispatch = useDispatch();
 
     const filter = useSelector(state => state.filterQuery.filter);
-    console.log(filter)
+    //console.log(filter)
 
     const contacts = useSelector(state => state.contacts.items);
-    console.log(contacts)
+    //console.log(contacts)
 
     const filtredContacts = 
           contacts
@@ -23,9 +23,9 @@ export const ContactsList = ()=> {
     };
 
     return (
-    <ul >
+    <ul>
         {filtredContacts.map(contact =>  
-            <li key = {nanoid()} style={{ marginTop: '10px' }} >
+            <li key = {nanoid()} style={{marginBottom: 10 }}>
                 <ContactsItem 
                     item = {contact} 
                     onDelete={ handleDelete } 

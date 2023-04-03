@@ -8,6 +8,12 @@ const contactsSlice = createSlice ({
     reducers: {
         addContact: {
             reducer(state, action){
+                for (const item of state.items){
+                    if (item.contact.name === action.payload.contact.name ){
+                        alert (`${action.payload.contact.name} is already in contacts`); 
+                        return;
+                    }
+                }
                 state.items.push(action.payload);
             },
             prepare(contact) {
@@ -18,12 +24,12 @@ const contactsSlice = createSlice ({
                 };
             },
         },
+        
         deleteContact: {
             reducer(state, action){
                 const index = state.items.findIndex(
-                item => item.id === action.payload
-              );
-              state.items.splice(index, 1);  
+                item => item.contact.id === action.payload);
+                state.items.splice(index, 1);  
             },
         }
     }
